@@ -1,108 +1,86 @@
-<!doctype html>
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+PCFkb2N0eXBlIGh0bWw+CjxodG1sPgo8aGVhZD4KPG1ldGEgaHR0cC1lcXVp
+dj0iY29udGVudC10eXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9
+VVRGLTgiPgo8bGluayB0eXBlPSJ0ZXh0L2NzcyIgcmVsPSJzdHlsZXNoZWV0
+IiBocmVmPSJjb21tb24uY3NzIj4KPHRpdGxlPkFuZ3VsYXIgZmlsZSB1cGxv
 <link type="text/css" rel="stylesheet" href="common.css">
 <title>Angular file upload sample</title>
 <script src="js/angular-file-upload-shim.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js" integrity="sha384-q1MGEEXrV7yJrbppy4QBO2KeuPFipIip35M8oz2UYFoYJodIga/lA+SiI5N6NyLs" crossorigin="anonymous"></script>
 <!-- <script src="http://cdn.jsdelivr.net/angular.file-upload/1.0.0/angular-file-upload.min.js"></script> -->
 <script src="js/angular-file-upload.js"></script>
 </head>
-
-<body>
-	<h1>Angular file upload Demo</h1>
-	<h3>
-		Visit <a href="https://github.com/danialfarid/angular-file-upload">angular-file-upload</a> on github
-	</h3>
-
-	<div ng-app="fileUpload" ng-controller="MyCtrl">
-		Model object to be sent to the server with the file: <input type="text" ng-model="myModel"> <br />
-		choose a single file: <input type="file" ng-file-select="onFileSelect($files)">
-		<br/>
-		or multiple files: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="file" ng-file-select="onFileSelect($files)" multiple>
-		<br/>
-		<br/>
-		<div ng-show="dropSupported" class="drop-box" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true">or drop files here</div>
-		<div ng-show="!dropSupported">HTML5 Drop File is not supported on this browser</div>
-		<br/>
-		Progress:
-		<br/>
-		<div ng-show="selectedFiles != null">
-			<div class="sel-file" ng-repeat="f in selectedFiles">
-				<span class="progress">						
-					<div style="width:{{progress[$index]}}%">{{progress[$index]}}%</div>
-				</span>				
-				<button class="button" ng-click="upload[$index].abort(); upload[$index]=null" 
-					ng-show="upload[$index] && progress[$index] < 100">Abort</button>
-				{{f.name}} - size: {{f.size}}B - type: {{f.type}}
-			</div>
-		</div>
-		<div class="response" ng-show="uploadResult.length > 0">
-			Server Response:
-			<ul>
-				<li ng-repeat="result in uploadResult">
-					<ul>
-						<li ng-repeat="item in result">
-							<div data-ng-show="item.name">file name: {{item.name}}</div>
-							<div data-ng-show="item.fieldName">name: {{item.fieldName}}</div>
-							<div data-ng-show="item.size">size on the serve: {{item.size}}</div>
-							<div data-ng-show="item.value">value: {{item.value}}</div>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<script type="text/javascript">
-		angular.module('fileUpload', [ 'angularFileUpload' ]);
-
-		var MyCtrl = [ '$scope', '$http', '$timeout', '$upload', function($scope, $http, $timeout, $upload) {
-
-			$scope.onFileSelect = function($files) {
-				$scope.selectedFiles = [];
-				$scope.progress = [];
-				if ($scope.upload && $scope.upload.length > 0) {
-					for (var i = 0; i < $scope.upload.length; i++) {
-						if ($scope.upload[i] != null) {
-							$scope.upload[i].abort();
-						}
-					}
-				}
-				$scope.upload = [];
-				$scope.uploadResult = [];
-				$scope.selectedFiles = $files;
-				for ( var i = 0; i < $files.length; i++) {
-					var $file = $files[i];
-					$scope.progress[i] = 0;
-					(function(index) {
-						$scope.upload[index] = $upload.upload({
-							url : 'upload',
-							headers: {'myHeaderKey': 'myHeaderVal'},
-							data : {
-								myModel : $scope.myModel
-							},
-							/* formDataAppender: function(fd, key, val) {
-								if (angular.isArray(val)) {
-			                        angular.forEach(val, function(v) {
-			                          fd.append(key, v);
-			                        });
-			                      } else {
-			                        fd.append(key, val);
-			                      }
-							}, */
-							file : $file,
-							fileFormDataName: 'myFile'
-						}).then(function(response) {
-							$scope.uploadResult.push(response.data.result);
-						}, null, function(evt) {
-							$scope.progress[index] = parseInt(100.0 * evt.loaded / evt.total);
-						});
-					})(i);
-				}
-			}
-		} ];
-	</script>
-</body>
-</html>
+Y3JpcHQ+CjwvaGVhZD4KCjxib2R5PgoJPGgxPkFuZ3VsYXIgZmlsZSB1cGxv
+YWQgRGVtbzwvaDE+Cgk8aDM+CgkJVmlzaXQgPGEgaHJlZj0iaHR0cHM6Ly9n
+aXRodWIuY29tL2RhbmlhbGZhcmlkL2FuZ3VsYXItZmlsZS11cGxvYWQiPmFu
+Z3VsYXItZmlsZS11cGxvYWQ8L2E+IG9uIGdpdGh1YgoJPC9oMz4KCgk8ZGl2
+IG5nLWFwcD0iZmlsZVVwbG9hZCIgbmctY29udHJvbGxlcj0iTXlDdHJsIj4K
+CQlNb2RlbCBvYmplY3QgdG8gYmUgc2VudCB0byB0aGUgc2VydmVyIHdpdGgg
+dGhlIGZpbGU6IDxpbnB1dCB0eXBlPSJ0ZXh0IiBuZy1tb2RlbD0ibXlNb2Rl
+bCI+IDxiciAvPgoJCWNob29zZSBhIHNpbmdsZSBmaWxlOiA8aW5wdXQgdHlw
+ZT0iZmlsZSIgbmctZmlsZS1zZWxlY3Q9Im9uRmlsZVNlbGVjdCgkZmlsZXMp
+Ij4KCQk8YnIvPgoJCW9yIG11bHRpcGxlIGZpbGVzOiAmbmJzcDsmbmJzcDsm
+bmJzcDsmbmJzcDsmbmJzcDsgPGlucHV0IHR5cGU9ImZpbGUiIG5nLWZpbGUt
+c2VsZWN0PSJvbkZpbGVTZWxlY3QoJGZpbGVzKSIgbXVsdGlwbGU+CgkJPGJy
+Lz4KCQk8YnIvPgoJCTxkaXYgbmctc2hvdz0iZHJvcFN1cHBvcnRlZCIgY2xh
+c3M9ImRyb3AtYm94IiBuZy1maWxlLWRyb3A9Im9uRmlsZVNlbGVjdCgkZmls
+ZXMpOyIgbmctZmlsZS1kcm9wLWF2YWlsYWJsZT0iZHJvcFN1cHBvcnRlZD10
+cnVlIj5vciBkcm9wIGZpbGVzIGhlcmU8L2Rpdj4KCQk8ZGl2IG5nLXNob3c9
+IiFkcm9wU3VwcG9ydGVkIj5IVE1MNSBEcm9wIEZpbGUgaXMgbm90IHN1cHBv
+cnRlZCBvbiB0aGlzIGJyb3dzZXI8L2Rpdj4KCQk8YnIvPgoJCVByb2dyZXNz
+OgoJCTxici8+CgkJPGRpdiBuZy1zaG93PSJzZWxlY3RlZEZpbGVzICE9IG51
+bGwiPgoJCQk8ZGl2IGNsYXNzPSJzZWwtZmlsZSIgbmctcmVwZWF0PSJmIGlu
+IHNlbGVjdGVkRmlsZXMiPgoJCQkJPHNwYW4gY2xhc3M9InByb2dyZXNzIj4J
+CQkJCQkKCQkJCQk8ZGl2IHN0eWxlPSJ3aWR0aDp7e3Byb2dyZXNzWyRpbmRl
+eF19fSUiPnt7cHJvZ3Jlc3NbJGluZGV4XX19JTwvZGl2PgoJCQkJPC9zcGFu
+PgkJCQkKCQkJCTxidXR0b24gY2xhc3M9ImJ1dHRvbiIgbmctY2xpY2s9InVw
+bG9hZFskaW5kZXhdLmFib3J0KCk7IHVwbG9hZFskaW5kZXhdPW51bGwiIAoJ
+CQkJCW5nLXNob3c9InVwbG9hZFskaW5kZXhdICYmIHByb2dyZXNzWyRpbmRl
+eF0gPCAxMDAiPkFib3J0PC9idXR0b24+CgkJCQl7e2YubmFtZX19IC0gc2l6
+ZToge3tmLnNpemV9fUIgLSB0eXBlOiB7e2YudHlwZX19CgkJCTwvZGl2PgoJ
+CTwvZGl2PgoJCTxkaXYgY2xhc3M9InJlc3BvbnNlIiBuZy1zaG93PSJ1cGxv
+YWRSZXN1bHQubGVuZ3RoID4gMCI+CgkJCVNlcnZlciBSZXNwb25zZToKCQkJ
+PHVsPgoJCQkJPGxpIG5nLXJlcGVhdD0icmVzdWx0IGluIHVwbG9hZFJlc3Vs
+dCI+CgkJCQkJPHVsPgoJCQkJCQk8bGkgbmctcmVwZWF0PSJpdGVtIGluIHJl
+c3VsdCI+CgkJCQkJCQk8ZGl2IGRhdGEtbmctc2hvdz0iaXRlbS5uYW1lIj5m
+aWxlIG5hbWU6IHt7aXRlbS5uYW1lfX08L2Rpdj4KCQkJCQkJCTxkaXYgZGF0
+YS1uZy1zaG93PSJpdGVtLmZpZWxkTmFtZSI+bmFtZToge3tpdGVtLmZpZWxk
+TmFtZX19PC9kaXY+CgkJCQkJCQk8ZGl2IGRhdGEtbmctc2hvdz0iaXRlbS5z
+aXplIj5zaXplIG9uIHRoZSBzZXJ2ZToge3tpdGVtLnNpemV9fTwvZGl2PgoJ
+CQkJCQkJPGRpdiBkYXRhLW5nLXNob3c9Iml0ZW0udmFsdWUiPnZhbHVlOiB7
+e2l0ZW0udmFsdWV9fTwvZGl2PgoJCQkJCQk8L2xpPgoJCQkJCTwvdWw+CgkJ
+CQk8L2xpPgoJCQk8L3VsPgoJCTwvZGl2PgoJPC9kaXY+CgoJPHNjcmlwdCB0
+eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPgoJCWFuZ3VsYXIubW9kdWxlKCdmaWxl
+VXBsb2FkJywgWyAnYW5ndWxhckZpbGVVcGxvYWQnIF0pOwoKCQl2YXIgTXlD
+dHJsID0gWyAnJHNjb3BlJywgJyRodHRwJywgJyR0aW1lb3V0JywgJyR1cGxv
+YWQnLCBmdW5jdGlvbigkc2NvcGUsICRodHRwLCAkdGltZW91dCwgJHVwbG9h
+ZCkgewoKCQkJJHNjb3BlLm9uRmlsZVNlbGVjdCA9IGZ1bmN0aW9uKCRmaWxl
+cykgewoJCQkJJHNjb3BlLnNlbGVjdGVkRmlsZXMgPSBbXTsKCQkJCSRzY29w
+ZS5wcm9ncmVzcyA9IFtdOwoJCQkJaWYgKCRzY29wZS51cGxvYWQgJiYgJHNj
+b3BlLnVwbG9hZC5sZW5ndGggPiAwKSB7CgkJCQkJZm9yICh2YXIgaSA9IDA7
+IGkgPCAkc2NvcGUudXBsb2FkLmxlbmd0aDsgaSsrKSB7CgkJCQkJCWlmICgk
+c2NvcGUudXBsb2FkW2ldICE9IG51bGwpIHsKCQkJCQkJCSRzY29wZS51cGxv
+YWRbaV0uYWJvcnQoKTsKCQkJCQkJfQoJCQkJCX0KCQkJCX0KCQkJCSRzY29w
+ZS51cGxvYWQgPSBbXTsKCQkJCSRzY29wZS51cGxvYWRSZXN1bHQgPSBbXTsK
+CQkJCSRzY29wZS5zZWxlY3RlZEZpbGVzID0gJGZpbGVzOwoJCQkJZm9yICgg
+dmFyIGkgPSAwOyBpIDwgJGZpbGVzLmxlbmd0aDsgaSsrKSB7CgkJCQkJdmFy
+ICRmaWxlID0gJGZpbGVzW2ldOwoJCQkJCSRzY29wZS5wcm9ncmVzc1tpXSA9
+IDA7CgkJCQkJKGZ1bmN0aW9uKGluZGV4KSB7CgkJCQkJCSRzY29wZS51cGxv
+YWRbaW5kZXhdID0gJHVwbG9hZC51cGxvYWQoewoJCQkJCQkJdXJsIDogJ3Vw
+bG9hZCcsCgkJCQkJCQloZWFkZXJzOiB7J215SGVhZGVyS2V5JzogJ215SGVh
+ZGVyVmFsJ30sCgkJCQkJCQlkYXRhIDogewoJCQkJCQkJCW15TW9kZWwgOiAk
+c2NvcGUubXlNb2RlbAoJCQkJCQkJfSwKCQkJCQkJCS8qIGZvcm1EYXRhQXBw
+ZW5kZXI6IGZ1bmN0aW9uKGZkLCBrZXksIHZhbCkgewoJCQkJCQkJCWlmIChh
+bmd1bGFyLmlzQXJyYXkodmFsKSkgewoJCQkgICAgICAgICAgICAgICAgICAg
+ICAgICBhbmd1bGFyLmZvckVhY2godmFsLCBmdW5jdGlvbih2KSB7CgkJCSAg
+ICAgICAgICAgICAgICAgICAgICAgICAgZmQuYXBwZW5kKGtleSwgdik7CgkJ
+CSAgICAgICAgICAgICAgICAgICAgICAgIH0pOwoJCQkgICAgICAgICAgICAg
+ICAgICAgICAgfSBlbHNlIHsKCQkJICAgICAgICAgICAgICAgICAgICAgICAg
+ZmQuYXBwZW5kKGtleSwgdmFsKTsKCQkJICAgICAgICAgICAgICAgICAgICAg
+IH0KCQkJCQkJCX0sICovCgkJCQkJCQlmaWxlIDogJGZpbGUsCgkJCQkJCQlm
+aWxlRm9ybURhdGFOYW1lOiAnbXlGaWxlJwoJCQkJCQl9KS50aGVuKGZ1bmN0
+aW9uKHJlc3BvbnNlKSB7CgkJCQkJCQkkc2NvcGUudXBsb2FkUmVzdWx0LnB1
+c2gocmVzcG9uc2UuZGF0YS5yZXN1bHQpOwoJCQkJCQl9LCBudWxsLCBmdW5j
+dGlvbihldnQpIHsKCQkJCQkJCSRzY29wZS5wcm9ncmVzc1tpbmRleF0gPSBw
+YXJzZUludCgxMDAuMCAqIGV2dC5sb2FkZWQgLyBldnQudG90YWwpOwoJCQkJ
+CQl9KTsKCQkJCQl9KShpKTsKCQkJCX0KCQkJfQoJCX0gXTsKCTwvc2NyaXB0
+Pgo8L2JvZHk+CjwvaHRtbD4K
